@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App - 3-Column Layout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Column 1: Folders -->
+        <div class="column folders-column">
+            <div class="column-header">
+                <h2>Folders</h2>
+                <div class="folder-actions">
+                    <button id="new-folder-btn" class="icon-btn" title="Create New Folder">
+                        <i class="fas fa-folder-plus"></i>
+                    </button>
+                    <button id="rename-folder-btn" class="icon-btn" title="Rename Selected Folder" disabled>
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button id="delete-folder-btn" class="icon-btn" title="Delete Selected Folder" disabled>
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="folder-list" id="folder-list">
+                <!-- Folders will be populated here -->
+            </div>
+            <div class="new-folder-form hidden" id="new-folder-form">
+                <input type="text" id="new-folder-input" placeholder="Folder name">
+                <div class="form-buttons">
+                    <button id="save-folder-btn" class="small-btn">Save</button>
+                    <button id="cancel-folder-btn" class="small-btn">Cancel</button>
+                </div>
+            </div>
+            <div class="rename-folder-form hidden" id="rename-folder-form">
+                <input type="text" id="rename-folder-input" placeholder="New folder name">
+                <div class="form-buttons">
+                    <button id="save-rename-btn" class="small-btn">Save</button>
+                    <button id="cancel-rename-btn" class="small-btn">Cancel</button>
+                </div>
+            </div>
+            <div class="import-export-panel">
+                <button id="export-btn" class="action-btn">
+                    <i class="fas fa-file-export"></i> Export All Notes
+                </button>
+                <button id="import-btn" class="action-btn">
+                    <i class="fas fa-file-import"></i> Import Notes
+                </button>
+                <input type="file" id="import-file" accept=".json" class="hidden">
+            </div>
+        </div>
+        
+        <!-- Column 2: Notes List -->
+        <div class="column notes-list-column">
+            <div class="column-header">
+                <h2 id="current-folder-name">Select a Folder</h2>
+                <button id="new-note-btn" class="icon-btn" title="Create New Note" disabled>
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="notes-list" id="notes-list">
+                <!-- Notes will be populated here -->
+                <p class="empty-message">Select a folder to view notes</p>
+            </div>
+        </div>
+        
+        <!-- Column 3: Note Editor -->
+        <div class="column note-editor-column">
+            <div class="column-header">
+                <h2>Note Editor</h2>
+                <div class="editor-actions">
+                    <button id="toggle-preview-btn" class="icon-btn" title="Toggle Preview" disabled>
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button id="save-note-btn" class="icon-btn" title="Save Note" disabled>
+                        <i class="fas fa-save"></i>
+                    </button>
+                    <button id="delete-note-btn" class="icon-btn" title="Delete Note" disabled>
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="editor-container">
+                <textarea id="note-content" placeholder="First line is the title&#10;&#10;Write your note here using Markdown..." disabled></textarea>
+                <div id="markdown-preview" class="markdown-preview hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

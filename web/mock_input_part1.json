@@ -1,0 +1,128 @@
+{
+  "folders": [
+    {
+      "id": "1000000001",
+      "name": "Project Ideas",
+      "notes": [
+        {
+          "id": "1100000001",
+          "title": "Microservices Architecture",
+          "content": "Ideas for implementing a scalable microservices architecture:\n\n- Use Docker containers for each service\n- Implement API Gateway pattern\n- Use event-driven communication\n- Consider using Kubernetes for orchestration\n- Implement circuit breaker pattern for resilience",
+          "createdAt": "2025-01-15T10:30:00.000Z",
+          "updatedAt": "2025-01-15T10:30:00.000Z"
+        },
+        {
+          "id": "1100000002",
+          "title": "Machine Learning Project",
+          "content": "# ML Project Ideas\n\n## Recommendation System\n- Collaborative filtering\n- Content-based filtering\n- Hybrid approach\n\n## Data Requirements\n- User interaction data\n- Item metadata\n- Contextual information\n\n```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\n\n# Load data\ndata = pd.read_csv('user_interactions.csv')\n\n# Split into train/test\nX_train, X_test = train_test_split(data, test_size=0.2, random_state=42)\n```",
+          "createdAt": "2025-01-20T14:45:00.000Z",
+          "updatedAt": "2025-02-05T09:15:00.000Z"
+        },
+        {
+          "id": "1100000003",
+          "title": "Mobile App Concept",
+          "content": "## Fitness Tracking App\n\n### Features\n- Activity tracking (steps, distance, calories)\n- Workout plans and routines\n- Social sharing and challenges\n- Integration with wearable devices\n- Nutrition tracking\n\n### Tech Stack\n- React Native for cross-platform development\n- Firebase for backend\n- Redux for state management\n- GraphQL for API",
+          "createdAt": "2025-02-10T16:20:00.000Z",
+          "updatedAt": "2025-02-10T16:20:00.000Z"
+        },
+        {
+          "id": "1100000004",
+          "title": "Blockchain Application",
+          "content": "Exploring use cases for blockchain beyond cryptocurrency:\n\n1. Supply chain tracking\n2. Digital identity verification\n3. Smart contracts for real estate\n4. Decentralized finance applications\n5. Voting systems\n\nTechnologies to consider:\n- Ethereum for smart contracts\n- Hyperledger for enterprise solutions\n- IPFS for decentralized storage",
+          "createdAt": "2025-02-15T11:10:00.000Z",
+          "updatedAt": "2025-02-15T11:10:00.000Z"
+        },
+        {
+          "id": "1100000005",
+          "title": "IoT Home Automation",
+          "content": "# Smart Home System Architecture\n\n## Components\n- Central hub (Raspberry Pi)\n- Sensors (temperature, motion, light)\n- Actuators (switches, locks)\n- Mobile/web interface\n\n## Communication Protocols\n- MQTT for messaging\n- Zigbee/Z-Wave for device communication\n- REST API for external integrations\n\n## Security Considerations\n- End-to-end encryption\n- Regular security updates\n- Network segmentation\n- Certificate-based authentication",
+          "createdAt": "2025-02-20T09:30:00.000Z",
+          "updatedAt": "2025-03-01T14:25:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "1000000002",
+      "name": "Coding Snippets",
+      "notes": [
+        {
+          "id": "1200000001",
+          "title": "Useful JavaScript Functions",
+          "content": "```javascript\n// Debounce function\nfunction debounce(func, wait) {\n  let timeout;\n  return function executedFunction(...args) {\n    const later = () => {\n      clearTimeout(timeout);\n      func(...args);\n    };\n    clearTimeout(timeout);\n    timeout = setTimeout(later, wait);\n  };\n}\n\n// Deep clone object\nfunction deepClone(obj) {\n  return JSON.parse(JSON.stringify(obj));\n}\n\n// Generate UUID\nfunction generateUUID() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\n    const r = Math.random() * 16 | 0;\n    const v = c === 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n```",
+          "createdAt": "2025-01-05T08:20:00.000Z",
+          "updatedAt": "2025-01-05T08:20:00.000Z"
+        },
+        {
+          "id": "1200000002",
+          "title": "Python Data Processing",
+          "content": "```python\nimport pandas as pd\nimport numpy as np\nfrom datetime import datetime\n\n# Load and clean data\ndef load_and_clean(filepath):\n    df = pd.read_csv(filepath)\n    \n    # Handle missing values\n    df.fillna({\n        'numeric_col': df['numeric_col'].mean(),\n        'categorical_col': 'unknown',\n        'date_col': datetime.now().strftime('%Y-%m-%d')\n    }, inplace=True)\n    \n    # Remove duplicates\n    df.drop_duplicates(inplace=True)\n    \n    # Convert types\n    df['date_col'] = pd.to_datetime(df['date_col'])\n    \n    return df\n\n# Example usage\ndf = load_and_clean('data.csv')\nprint(f\"Loaded {len(df)} records\")\n```",
+          "createdAt": "2025-01-10T11:45:00.000Z",
+          "updatedAt": "2025-01-10T11:45:00.000Z"
+        },
+        {
+          "id": "1200000003",
+          "title": "SQL Query Templates",
+          "content": "## Common SQL Queries\n\n### Join with Aggregation\n```sql\nSELECT \n    c.customer_id,\n    c.name,\n    c.email,\n    COUNT(o.order_id) AS total_orders,\n    SUM(o.amount) AS total_spent\nFROM \n    customers c\nLEFT JOIN \n    orders o ON c.customer_id = o.customer_id\nGROUP BY \n    c.customer_id, c.name, c.email\nHAVING \n    COUNT(o.order_id) > 5\nORDER BY \n    total_spent DESC;\n```\n\n### Window Functions\n```sql\nSELECT\n    product_id,\n    category,\n    price,\n    AVG(price) OVER (PARTITION BY category) AS avg_category_price,\n    price - AVG(price) OVER (PARTITION BY category) AS price_diff_from_avg,\n    RANK() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank\nFROM\n    products;\n```",
+          "createdAt": "2025-01-15T14:30:00.000Z",
+          "updatedAt": "2025-01-15T14:30:00.000Z"
+        },
+        {
+          "id": "1200000004",
+          "title": "Docker Commands",
+          "content": "# Useful Docker Commands\n\n## Container Management\n```bash\n# List running containers\ndocker ps\n\n# List all containers (including stopped)\ndocker ps -a\n\n# Start a container\ndocker start container_name\n\n# Stop a container\ndocker stop container_name\n\n# Remove a container\ndocker rm container_name\n```\n\n## Image Management\n```bash\n# List images\ndocker images\n\n# Pull an image\ndocker pull image_name:tag\n\n# Build an image\ndocker build -t image_name:tag .\n\n# Remove an image\ndocker rmi image_name:tag\n```\n\n## Docker Compose\n```bash\n# Start services\ndocker-compose up -d\n\n# Stop services\ndocker-compose down\n\n# View logs\ndocker-compose logs -f service_name\n```",
+          "createdAt": "2025-01-20T09:15:00.000Z",
+          "updatedAt": "2025-01-20T09:15:00.000Z"
+        },
+        {
+          "id": "1200000005",
+          "title": "Git Workflow",
+          "content": "## Git Commands for Feature Branch Workflow\n\n```bash\n# Create and switch to a new feature branch\ngit checkout -b feature/new-feature main\n\n# Make changes and commit\ngit add .\ngit commit -m \"Implement new feature\"\n\n# Push branch to remote\ngit push -u origin feature/new-feature\n\n# Update branch with latest changes from main\ngit fetch origin\ngit rebase origin/main\n\n# Squash commits before merging\ngit rebase -i HEAD~3  # Squash last 3 commits\n\n# Merge feature branch into main\ngit checkout main\ngit merge --no-ff feature/new-feature\ngit push origin main\n\n# Delete feature branch after merging\ngit branch -d feature/new-feature\ngit push origin --delete feature/new-feature\n```",
+          "createdAt": "2025-01-25T16:40:00.000Z",
+          "updatedAt": "2025-01-25T16:40:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "1000000003",
+      "name": "Architecture Patterns",
+      "notes": [
+        {
+          "id": "1300000001",
+          "title": "Microservices vs Monolith",
+          "content": "# Comparing Architecture Styles\n\n## Monolithic Architecture\n\n### Pros\n- Simpler development workflow\n- Easier testing and deployment\n- Better performance for small applications\n- Less operational complexity\n\n### Cons\n- Harder to scale specific components\n- Technology stack is fixed\n- Larger codebase becomes harder to maintain\n- Longer build and deployment times\n\n## Microservices Architecture\n\n### Pros\n- Independent scaling of services\n- Technology diversity\n- Smaller, focused teams\n- Fault isolation\n- Independent deployment\n\n### Cons\n- Distributed system complexity\n- Network latency\n- Data consistency challenges\n- Operational overhead\n- Testing complexity",
+          "createdAt": "2025-02-01T10:20:00.000Z",
+          "updatedAt": "2025-02-01T10:20:00.000Z"
+        },
+        {
+          "id": "1300000002",
+          "title": "Event-Driven Architecture",
+          "content": "## Event-Driven Architecture Components\n\n### Event Producers\n- Generate events based on state changes\n- Decouple from consumers\n- Focus on their core responsibilities\n\n### Event Channels\n- Message brokers (Kafka, RabbitMQ)\n- Event buses\n- Webhooks\n\n### Event Consumers\n- Subscribe to relevant events\n- React to events asynchronously\n- Can be added without modifying producers\n\n### Implementation Considerations\n- Event schema design and evolution\n- Idempotent consumers\n- Error handling and dead letter queues\n- Monitoring and tracing\n\n```java\n// Example event producer in Java\npublic class OrderService {\n    private final EventPublisher eventPublisher;\n    \n    public void createOrder(Order order) {\n        // Business logic\n        orderRepository.save(order);\n        \n        // Publish event\n        OrderCreatedEvent event = new OrderCreatedEvent(order.getId(), order.getCustomerId());\n        eventPublisher.publish(\"orders\", event);\n    }\n}\n```",
+          "createdAt": "2025-02-05T14:15:00.000Z",
+          "updatedAt": "2025-02-05T14:15:00.000Z"
+        },
+        {
+          "id": "1300000003",
+          "title": "CQRS Pattern",
+          "content": "# Command Query Responsibility Segregation\n\n## Core Concept\nSeparate the read and write operations for a data store to use different models, optimize each for its specific task.\n\n## Components\n\n### Command Side\n- Handles create, update, delete operations\n- Optimized for write performance\n- Ensures data validity and business rules\n- Often uses event sourcing\n\n### Query Side\n- Handles read operations\n- Optimized for read performance\n- Can use denormalized views\n- Can be scaled independently\n\n## Implementation Approaches\n\n### Single Database\n```\n┌─────────────┐     ┌─────────────┐\n│             │     │             │\n│  Command    │     │   Query     │\n│   Model     │     │   Model     │\n│             │     │             │\n└──────┬──────┘     └──────┬──────┘\n       │                   │\n       │                   │\n       ▼                   ▼\n┌─────────────────────────────────┐\n│                                 │\n│            Database             │\n│                                 │\n└─────────────────────────────────┘\n```\n\n### Separate Databases\n```\n┌─────────────┐     ┌─────────────┐\n│             │     │             │\n│  Command    │     │   Query     │\n│   Model     │     │   Model     │\n│             │     │             │\n└──────┬──────┘     └──────┬──────┘\n       │                   │\n       │                   │\n       ▼                   ▼\n┌─────────────┐     ┌─────────────┐\n│             │     │             │\n│  Command DB │────▶│  Query DB   │\n│             │sync │             │\n└─────────────┘     └─────────────┘\n```",
+          "createdAt": "2025-02-10T11:30:00.000Z",
+          "updatedAt": "2025-02-10T11:30:00.000Z"
+        },
+        {
+          "id": "1300000004",
+          "title": "API Gateway Pattern",
+          "content": "# API Gateway Pattern\n\n## Purpose\nProvide a single entry point for all clients to interact with a backend system composed of multiple services.\n\n## Responsibilities\n- Request routing\n- API composition\n- Protocol translation\n- Authentication and authorization\n- Rate limiting and throttling\n- Caching\n- Monitoring and analytics\n- Load balancing\n\n## Implementation Options\n\n### Commercial Solutions\n- AWS API Gateway\n- Azure API Management\n- Google Cloud Endpoints\n- Kong\n- Apigee\n\n### Open Source Options\n- Kong\n- Tyk\n- KrakenD\n- Express Gateway\n\n## Example Configuration (Kong)\n\n```yaml\n_format_version: \"2.1\"\n\nservices:\n  - name: user-service\n    url: http://user-service:8080\n    routes:\n      - name: user-routes\n        paths:\n          - /api/users\n    plugins:\n      - name: rate-limiting\n        config:\n          minute: 60\n          policy: local\n      - name: key-auth\n        config:\n          key_names: [\"api-key\"]\n          \n  - name: order-service\n    url: http://order-service:8080\n    routes:\n      - name: order-routes\n        paths:\n          - /api/orders\n    plugins:\n      - name: jwt\n      - name: cors\n        config:\n          origins: [\"*\"]\n          methods: [\"GET\", \"POST\", \"PUT\", \"DELETE\"]\n```",
+          "createdAt": "2025-02-15T09:45:00.000Z",
+          "updatedAt": "2025-02-15T09:45:00.000Z"
+        },
+        {
+          "id": "1300000005",
+          "title": "Domain-Driven Design",
+          "content": "# Domain-Driven Design Concepts\n\n## Strategic Design\n\n### Bounded Context\nA boundary within which a particular domain model applies. Different bounded contexts can have different models for the same concept.\n\n### Ubiquitous Language\nA common language shared between developers and domain experts, used consistently in code, documentation, and conversation.\n\n### Context Mapping\nPatterns for relationships between bounded contexts:\n- Partnership\n- Customer-Supplier\n- Conformist\n- Anticorruption Layer\n- Open Host Service\n- Published Language\n- Separate Ways\n- Big Ball of Mud\n\n## Tactical Design\n\n### Entities\nObjects defined by their identity rather than their attributes.\n\n### Value Objects\nImmutable objects with no identity, defined only by their attributes.\n\n### Aggregates\nClusters of entities and value objects with a single entry point (the aggregate root).\n\n### Domain Events\nObjects that represent something significant that happened in the domain.\n\n### Repositories\nAbstractions for storing and retrieving aggregates.\n\n### Services\nOperations that don't naturally belong to entities or value objects.\n\n### Factories\nMethods for creating complex objects or aggregates.\n\n```java\n// Example of an Aggregate Root in Java\npublic class Order {\n    private OrderId id;\n    private CustomerId customerId;\n    private OrderStatus status;\n    private Money totalAmount;\n    private Set<OrderLine> orderLines;\n    \n    // Constructor is private to enforce creation through factory\n    private Order() {}\n    \n    // Factory method\n    public static Order create(CustomerId customerId) {\n        Order order = new Order();\n        order.id = new OrderId(UUID.randomUUID());\n        order.customerId = customerId;\n        order.status = OrderStatus.DRAFT;\n        order.orderLines = new HashSet<>();\n        order.totalAmount = Money.ZERO;\n        \n        DomainEventPublisher.publish(new OrderCreatedEvent(order.id));\n        return order;\n    }\n    \n    // Business methods\n    public void addProduct(ProductId productId, int quantity, Money unitPrice) {\n        // Business logic and validation\n        if (status != OrderStatus.DRAFT) {\n            throw new IllegalStateException(\"Cannot modify a non-draft order\");\n        }\n        \n        OrderLine line = new OrderLine(productId, quantity, unitPrice);\n        orderLines.add(line);\n        recalculateTotal();\n    }\n    \n    public void submit() {\n        if (orderLines.isEmpty()) {\n            throw new IllegalStateException(\"Cannot submit an empty order\");\n        }\n        \n        status = OrderStatus.SUBMITTED;\n        DomainEventPublisher.publish(new OrderSubmittedEvent(id));\n    }\n    \n    private void recalculateTotal() {\n        totalAmount = orderLines.stream()\n            .map(OrderLine::getLineTotal)\n            .reduce(Money.ZERO, Money::add);\n    }\n}\n```",
+          "createdAt": "2025-02-20T13:25:00.000Z",
+          "updatedAt": "2025-02-20T13:25:00.000Z"
+        }
+      ]
+    }
+  ],
+  "exportDate": "2025-05-08T23:21:46.000Z"
+}
