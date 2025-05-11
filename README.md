@@ -1,4 +1,4 @@
-This application has been entierly written by Amazon Q CLI, except this line. In the `promts.txt` file you can fin the prompts used.
+This application has been entierly written by Amazon Q CLI, except this line. In the `promts.txt` file you can find the prompts used.
 
 # 3-Column Notes Application
 
