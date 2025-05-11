@@ -1,3 +1,5 @@
+This application has been entierly written by Amazon Q CLI, except this line. In the `promts.txt` file you can fin the prompts used.
+
 # 3-Column Notes Application
 
 A modern notes application with a 3-column layout for organizing and writing notes.
